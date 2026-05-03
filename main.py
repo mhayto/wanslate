@@ -10,6 +10,9 @@ import logging
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import PlainTextResponse
 from anthropic import Anthropic
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -48,7 +51,7 @@ def translate(text: str, to_arabic: bool) -> str:
         f"{text}"
     )
     response = anthropic.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}],
     )
