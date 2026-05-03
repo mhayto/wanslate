@@ -1,18 +1,24 @@
-# Replace "wanslate" with your actual Fly app name if different
-app = "wanslate"
-primary_region = "lhr"
+# fly.toml app configuration file generated for wanslate on 2026-05-03T15:33:12Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'wanslate'
+primary_region = 'ams'
 
 [build]
   dockerfile = "Dockerfile"
 
 [http_service]
-  internal_port = 8000
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 256
